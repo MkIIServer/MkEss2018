@@ -37,7 +37,7 @@ public class PlayerDeathListener extends MyListener {
         Bukkit.broadcastMessage(event.getPlayer().toString());
         Date death_date = playerDeath.get(event.getPlayer().getUniqueId()); 
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE, -30);
+        calendar.add(Calendar.MINUTE, -BAN_TIME_MIN );
         if(death_date != null && death_date.after(calendar.getTime())){
             long left = death_date.getTime() - calendar.getTime().getTime();
             event.disallow(Result.KICK_OTHER, "您還在死亡狀態, 還剩下 " + (int) Math.ceil(left/60000.0) + " 分鐘");
