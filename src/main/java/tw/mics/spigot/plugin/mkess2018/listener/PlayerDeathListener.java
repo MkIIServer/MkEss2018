@@ -34,7 +34,6 @@ public class PlayerDeathListener extends MyListener {
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event){
-        Bukkit.broadcastMessage(event.getPlayer().toString());
         Date death_date = playerDeath.get(event.getPlayer().getUniqueId()); 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, -BAN_TIME_MIN );
