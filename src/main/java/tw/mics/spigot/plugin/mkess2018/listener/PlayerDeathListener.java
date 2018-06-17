@@ -23,9 +23,9 @@ public class PlayerDeathListener extends MyListener {
         playerDeath = new HashMap<UUID, Date>();
     }
     
-    //第一次加入
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){
+        if(event.getEntity().isOp())return; //OP Bypass
         Player p = event.getEntity();
         Date date = new Date();
         playerDeath.put(p.getUniqueId(), date);
