@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tw.mics.spigot.plugin.mkess2018.listener.BedClickListener;
 import tw.mics.spigot.plugin.mkess2018.listener.LiquidLimitListener;
+import tw.mics.spigot.plugin.mkess2018.listener.PlayerDeathListener;
 import tw.mics.spigot.plugin.mkess2018.listener.PlayerRespawnListener;
 import tw.mics.spigot.plugin.mkess2018.listener.SpeedElytraLimitListener;
 
@@ -18,6 +19,7 @@ public class MkEss extends JavaPlugin {
         //註冊 listener
         new BedClickListener(this);
         new PlayerRespawnListener(this);
+        new PlayerDeathListener(this);
         new LiquidLimitListener(this);
         new SpeedElytraLimitListener(this);
     }
