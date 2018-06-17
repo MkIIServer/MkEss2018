@@ -39,7 +39,7 @@ public class PlayerRespawnListener extends MyListener {
 		Player p = event.getPlayer();
         
         if(!event.isBedSpawn()){
-            p.teleport(this.getNewSpawn(p));
+            event.setRespawnLocation(this.getNewSpawn(p));
         }
 	}
 	
@@ -55,10 +55,10 @@ public class PlayerRespawnListener extends MyListener {
     }
     
     private Location getNewSpawn(Player p) {
-        World w = Bukkit.getWorlds().get(1);
+        World w = Bukkit.getWorlds().get(0);
         Chunk[] chunks = w.getLoadedChunks();
         Chunk c = chunks[new Random().nextInt(chunks.length)];
         Location l = w.getHighestBlockAt(c.getBlock(new Random().nextInt(16), 255, new Random().nextInt(16)).getLocation()).getLocation();
-        return l;
+        return l.add(0.5, 0, 0.5);
 	}
 }
