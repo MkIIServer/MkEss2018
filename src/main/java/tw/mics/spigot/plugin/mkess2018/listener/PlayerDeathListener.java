@@ -25,7 +25,7 @@ public class PlayerDeathListener extends MyListener {
     
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){
-        if(event.getEntity().isOp())return; //OP Bypass
+        if(event.getEntity().isOp()) return; //OP Bypass
         Player p = event.getEntity();
         Date date = new Date();
         playerDeath.put(p.getUniqueId(), date);
