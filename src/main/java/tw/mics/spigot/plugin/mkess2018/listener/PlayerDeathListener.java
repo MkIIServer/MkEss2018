@@ -29,7 +29,12 @@ public class PlayerDeathListener extends MyListener {
         Player p = event.getEntity();
         Date date = new Date();
         playerDeath.put(p.getUniqueId(), date);
-        p.kickPlayer("您已經死亡, 將暫時無法進入伺服器 " + BAN_TIME_MIN + " 分鐘.");
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+            @Override
+            public void run() {
+                p.kickPlayer("您已經死亡, 將暫時無法進入伺服器 " + BAN_TIME_MIN + " 分鐘.");
+            }
+        });
     }
 
     @EventHandler
