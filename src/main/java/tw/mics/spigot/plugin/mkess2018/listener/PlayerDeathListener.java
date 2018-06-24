@@ -10,14 +10,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
-import org.bukkit.plugin.java.JavaPlugin;
 
+import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class PlayerDeathListener extends MyListener {
     HashMap<UUID, Date> playerDeath;
     static int BAN_TIME_MIN = 5;
 
-    public PlayerDeathListener(JavaPlugin instance)
+    public PlayerDeathListener(MkEss instance)
     {
         super(instance);
         playerDeath = new HashMap<UUID, Date>();

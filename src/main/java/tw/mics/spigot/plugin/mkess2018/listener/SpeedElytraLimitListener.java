@@ -3,11 +3,12 @@ package tw.mics.spigot.plugin.mkess2018.listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
+import tw.mics.spigot.plugin.mkess2018.MkEss;
+
 public class SpeedElytraLimitListener extends MyListener {
-    public SpeedElytraLimitListener(JavaPlugin instance) {
+    public SpeedElytraLimitListener(MkEss instance) {
         super(instance);
     }
     static double ELYTRA_SPEED_LIMIT_SPEED = 0.9;

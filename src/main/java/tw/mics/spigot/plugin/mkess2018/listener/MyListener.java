@@ -1,14 +1,14 @@
 
 package tw.mics.spigot.plugin.mkess2018.listener;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public abstract class MyListener implements Listener {
-	protected JavaPlugin plugin;
-	public MyListener(JavaPlugin instance){
+	protected MkEss plugin;
+	public MyListener(MkEss instance){
 		this.plugin = instance;
 	    this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);
 	}

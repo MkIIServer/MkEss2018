@@ -4,10 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class LiquidLimitListener extends MyListener {
-    public LiquidLimitListener(JavaPlugin instance) {
+    public LiquidLimitListener(MkEss instance) {
         super(instance);
     }
     static int LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT = 2;

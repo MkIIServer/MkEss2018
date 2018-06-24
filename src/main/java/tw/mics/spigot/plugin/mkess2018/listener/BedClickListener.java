@@ -6,13 +6,13 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class BedClickListener extends MyListener {
-	public BedClickListener(JavaPlugin instance)
+	public BedClickListener(MkEss instance)
 	{
 	    super(instance);
 	}

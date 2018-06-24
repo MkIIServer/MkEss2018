@@ -5,22 +5,19 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
-import org.bukkit.WorldBorder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-import org.bukkit.plugin.java.JavaPlugin;
 
+import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class PlayerRespawnListener extends MyListener {
-    public PlayerRespawnListener(JavaPlugin instance)
+    public PlayerRespawnListener(MkEss instance)
     {
         super(instance);
     }

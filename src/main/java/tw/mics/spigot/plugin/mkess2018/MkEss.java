@@ -33,4 +33,10 @@ public class MkEss extends JavaPlugin {
     public static JavaPlugin getInstance() {
         return instance;
     }
+
+    // log system
+    public void log(String str, Object... args) {
+        String message = String.format(str, args);
+        getLogger().info(message);
+    }
 }
