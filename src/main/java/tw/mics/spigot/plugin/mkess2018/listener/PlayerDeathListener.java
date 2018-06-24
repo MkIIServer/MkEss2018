@@ -25,8 +25,8 @@ public class PlayerDeathListener extends MyListener {
     
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){
-        if(event.getEntity().isOp()) return; //OP Bypass
         Player p = event.getEntity();
+        if(p.isOp() || p.hasPermission("mkess.deathbypass")) return; //OP Bypass
         Date date = new Date();
         playerDeath.put(p.getUniqueId(), date);
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
@@ -39,7 +39,9 @@ public class PlayerDeathListener extends MyListener {
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event){
-        Date death_date = playerDeath.get(event.getPlayer().getUniqueId()); 
+        Player p = event.getPlayer();
+        if(p.isOp() || p.hasPermission("mkess.deathbypass")) return; //OP Bypass
+        Date death_date = playerDeath.get(p.getUniqueId()); 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, -BAN_TIME_MIN );
         if(death_date != null && death_date.after(calendar.getTime())){
