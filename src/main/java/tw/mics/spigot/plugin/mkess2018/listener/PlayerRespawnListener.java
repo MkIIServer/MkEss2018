@@ -7,6 +7,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -54,8 +55,12 @@ public class PlayerRespawnListener extends MyListener {
     private Location getNewSpawn(Player p) {
         World w = Bukkit.getWorlds().get(0);
         Chunk[] chunks = w.getLoadedChunks();
-        Chunk c = chunks[new Random().nextInt(chunks.length)];
-        Location l = w.getHighestBlockAt(c.getBlock(new Random().nextInt(16), 255, new Random().nextInt(16)).getLocation()).getLocation();
-        return l.add(0.5, 0, 0.5);
+        Block b = null;
+        for(int i=0; i<3; i++){ //最多找 3 次
+            Chunk c = chunks[new Random().nextInt(chunks.length)];
+            b = w.getHighestBlockAt(c.getBlock(new Random().nextInt(16), 255, new Random().nextInt(16)).getLocation());
+            if(!b.isLiquid()) break; //不是水則中斷
+        }
+        return b.getLocation().add(0.5, 0, 0.5);
 	}
 }
