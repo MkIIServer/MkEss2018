@@ -16,6 +16,9 @@ public class MkEss extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
+        //設定世界
+        WorldSetting.runsetting();
+
         //註冊 listener
         new BedClickListener(this);
         new PlayerRespawnListener(this);
