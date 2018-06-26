@@ -56,7 +56,7 @@ public class PlayerRespawnListener extends MyListener {
         World w = Bukkit.getWorlds().get(0);
         Chunk[] chunks = w.getLoadedChunks();
         Block b = null;
-        for(int i=0; i<3; i++){ //最多找 3 次
+        for(int i=0; i<5; i++){ //最多找 5 次
             Chunk c = chunks[new Random().nextInt(chunks.length)];
             b = w.getHighestBlockAt(c.getBlock(new Random().nextInt(16), 255, new Random().nextInt(16)).getLocation());
             if(!b.isLiquid()) break; //不是水則中斷
