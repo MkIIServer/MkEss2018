@@ -8,11 +8,12 @@ import org.bukkit.event.block.BlockFromToEvent;
 import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class LiquidLimitListener extends MyListener {
+    static int LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT = 2;
+    static int LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT = 4;
+    
     public LiquidLimitListener(MkEss instance) {
         super(instance);
     }
-    static int LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT = 2;
-    static int LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT = 4;
 
     // 防止岩漿流動
     @EventHandler

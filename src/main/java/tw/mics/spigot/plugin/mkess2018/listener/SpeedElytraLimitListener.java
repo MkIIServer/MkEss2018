@@ -8,10 +8,11 @@ import org.bukkit.util.Vector;
 import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class SpeedElytraLimitListener extends MyListener {
+    static double ELYTRA_SPEED_LIMIT_SPEED = 0.9;
+    
     public SpeedElytraLimitListener(MkEss instance) {
         super(instance);
     }
-    static double ELYTRA_SPEED_LIMIT_SPEED = 0.9;
 
     // 限制鞘翅速度
     @EventHandler
