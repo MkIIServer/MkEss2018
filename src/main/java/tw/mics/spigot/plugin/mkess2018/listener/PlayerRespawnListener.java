@@ -1,10 +1,12 @@
 package tw.mics.spigot.plugin.mkess2018.listener;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
-import com.google.common.collect.ImmutableList;
-
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -70,11 +72,23 @@ public class PlayerRespawnListener extends MyListener {
         }
     }
     
-    private Location getNewSpawn(Player p) {
+    private Location getNewSpawn(Player player) {
         World w = Bukkit.getWorlds().get(0);
-        ImmutableList<? extends Player> players = ImmutableList.copyOf(Bukkit.getOnlinePlayers());
+        List<Player> players = new LinkedList<Player>(w.getPlayers());
+        Iterator<Player> itr = players.iterator();
+        while(itr.hasNext()){
+            Player p = itr.next();
+            if(
+                p.getUniqueId() == player.getUniqueId() ||
+                p.getGameMode() != GameMode.SURVIVAL
+            ){
+                itr.remove();
+                continue;
+            }
+        }
+        plugin.log(String.valueOf(players.size()));
         Block b = null;
-        if(players.size() < 5){ //如果玩家數 < 5 則隨機重生
+        if(players.size() < 5){ //如果現界玩家數 < 5 則隨機重生
             b = w.getHighestBlockAt(
                 new Random().nextInt(RANDOM_SPAWN_MAX * 2) - RANDOM_SPAWN_MAX, 
                 new Random().nextInt(RANDOM_SPAWN_MAX * 2) - RANDOM_SPAWN_MAX
