@@ -60,7 +60,12 @@ public class PlayerRespawnListener extends MyListener {
         if( event.getCause() == TeleportCause.END_PORTAL && event.getTo().getWorld().getEnvironment() == Environment.NORMAL ){
             Player p = event.getPlayer();
             if(p.getBedSpawnLocation() == null){
-                p.teleport(this.getNewSpawn(p));
+                Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+                    @Override
+                    public void run() {
+                        p.teleport(getNewSpawn(p));
+                    }
+                });
             }
         }
     }
