@@ -36,7 +36,7 @@ public class PlayerRespawnListener extends MyListener {
     @EventHandler
     public void onPlayerFirstJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
-        if(!p.hasPlayedBefore()) {
+        if(!p.hasPlayedBefore()) { // 如果為新玩家
             givePosionEffect(p);
             giveKits(p);
             p.teleport(this.getNewSpawn(p));
@@ -48,7 +48,7 @@ public class PlayerRespawnListener extends MyListener {
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		Player p = event.getPlayer();
         givePosionEffect(p);
-        if(!event.isBedSpawn()){
+        if(!event.isBedSpawn()){ // 如果不是床重生
             giveKits(p);
             event.setRespawnLocation(this.getNewSpawn(p));
         }
@@ -59,7 +59,7 @@ public class PlayerRespawnListener extends MyListener {
     public void onPortalTeleport(PlayerTeleportEvent event){
         if( event.getCause() == TeleportCause.END_PORTAL && event.getTo().getWorld().getEnvironment() == Environment.NORMAL ){
             Player p = event.getPlayer();
-            if(p.getBedSpawnLocation() == null){
+            if(p.getBedSpawnLocation() == null){ // 如果不是床重生
                 Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
                     @Override
                     public void run() {
