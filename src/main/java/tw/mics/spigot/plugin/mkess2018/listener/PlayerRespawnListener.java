@@ -86,7 +86,6 @@ public class PlayerRespawnListener extends MyListener {
                 continue;
             }
         }
-        plugin.log(String.valueOf(players.size()));
         Block b = null;
         if(players.size() < 5){ //如果現界玩家數 < 5 則隨機重生
             b = w.getHighestBlockAt(
