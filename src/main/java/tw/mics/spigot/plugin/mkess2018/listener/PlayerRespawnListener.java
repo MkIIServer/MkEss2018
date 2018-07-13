@@ -36,8 +36,8 @@ public class PlayerRespawnListener extends MyListener {
     @EventHandler
     public void onPlayerFirstJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
-        givePosionEffect(p);
         if(!p.hasPlayedBefore()) {
+            givePosionEffect(p);
             giveKits(p);
             p.teleport(this.getNewSpawn(p));
         }
@@ -94,8 +94,13 @@ public class PlayerRespawnListener extends MyListener {
         p.getInventory().addItem(pickaxe);
 	}
 
-	private void givePosionEffect(Player p) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 600, 4));
-        p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 2400, 0));
+	private void givePosionEffect(Player p) {        
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+            @Override
+            public void run() {
+                p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 600, 4));
+                p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 2400, 0));
+            }
+        });
 	}
 }
