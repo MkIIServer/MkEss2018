@@ -103,14 +103,19 @@ public class PlayerRespawnListener extends MyListener {
 	}
 
     private void giveKits(Player p) {
-        ItemStack cookie = new ItemStack(Material.COOKIE, 64);
-        ItemStack boat = new ItemStack(Material.BOAT, 1);
-        ItemStack axe = new ItemStack(Material.WOOD_AXE, 1);
-        ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
-        p.getInventory().addItem(cookie);
-        p.getInventory().addItem(boat);
-        p.getInventory().addItem(axe);
-        p.getInventory().addItem(pickaxe);
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+            @Override
+            public void run() {
+                ItemStack cookie = new ItemStack(Material.COOKIE, 64);
+                ItemStack boat = new ItemStack(Material.BOAT, 1);
+                ItemStack axe = new ItemStack(Material.WOOD_AXE, 1);
+                ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
+                p.getInventory().addItem(cookie);
+                p.getInventory().addItem(boat);
+                p.getInventory().addItem(axe);
+                p.getInventory().addItem(pickaxe);
+            }
+        });
 	}
 
 	private void givePosionEffect(Player p) {        
