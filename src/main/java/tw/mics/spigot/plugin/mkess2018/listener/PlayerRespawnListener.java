@@ -24,7 +24,8 @@ import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class PlayerRespawnListener extends MyListener {
     static int RANDOM_SPAWN_MAX = 10000;
-    static int PLAYER_DISTANCE = 200;
+    static int PLAYER_DISTANCE_MIN = 200;
+    static int PLAYER_DISTANCE_MAX = 300;
 
     public PlayerRespawnListener(MkEss instance)
     {
@@ -76,7 +77,8 @@ public class PlayerRespawnListener extends MyListener {
         } else { //其他則挑一個玩家距離 200 重生
             Player target_p = (Player) players.get(new Random().nextInt(players.size()));
             double angle = new Random().nextDouble() * Math.PI * 2;
-            b = w.getHighestBlockAt(target_p.getLocation().add(Math.cos(angle) * PLAYER_DISTANCE, 0, Math.sin(angle) * PLAYER_DISTANCE));
+            double distance = new Random().nextInt(PLAYER_DISTANCE_MAX - PLAYER_DISTANCE_MIN) + PLAYER_DISTANCE_MIN;
+            b = w.getHighestBlockAt(target_p.getLocation().add(Math.cos(angle) * distance, 0, Math.sin(angle) * distance));
         }
         return b.getLocation().add(0.5, 0, 0.5);
 	}
