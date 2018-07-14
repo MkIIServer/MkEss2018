@@ -36,6 +36,7 @@ public class BedClickListener extends MyListener {
         }
     }
 
+    //確認玩家重生安全
 	private boolean checkPlayerSpawn(Location l, Player p) {
         if(l == null || p.getBedSpawnLocation() == null) return false;
         if(l.getWorld() != p.getBedSpawnLocation().getWorld()) return false;
