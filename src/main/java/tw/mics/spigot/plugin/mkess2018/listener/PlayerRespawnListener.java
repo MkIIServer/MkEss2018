@@ -25,7 +25,7 @@ import org.bukkit.potion.PotionEffectType;
 import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class PlayerRespawnListener extends MyListener {
-    static int RANDOM_SPAWN_MAX = 10000;
+    static int RANDOM_SPAWN_MAX = 1000;
     static int PLAYER_DISTANCE_MIN = 200;
     static int PLAYER_DISTANCE_MAX = 300;
 
@@ -38,10 +38,10 @@ public class PlayerRespawnListener extends MyListener {
     @EventHandler
     public void onPlayerFirstJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
-        if(!p.hasPlayedBefore()) { // 如果為新玩家
+        if(!p.hasPlayedBefore()) {
             givePosionEffect(p);
             giveKits(p);
-            p.teleport(this.getNewSpawn(p));
+            p.teleport(getNewSpawn(p));
         }
     }
 
@@ -52,7 +52,7 @@ public class PlayerRespawnListener extends MyListener {
         givePosionEffect(p);
         if(!event.isBedSpawn()){ // 如果不是床重生
             giveKits(p);
-            event.setRespawnLocation(this.getNewSpawn(p));
+            event.setRespawnLocation(getNewSpawn(p));
         }
 	}
     
@@ -72,7 +72,7 @@ public class PlayerRespawnListener extends MyListener {
         }
     }
     
-    private Location getNewSpawn(Player player) {
+    static private Location getNewSpawn(Player player) {
         World w = Bukkit.getWorlds().get(0);
         List<Player> players = new LinkedList<Player>(w.getPlayers());
         Iterator<Player> itr = players.iterator();
