@@ -30,7 +30,6 @@ public class MkEss extends JavaPlugin {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll();
-        this.getServer().getScheduler().cancelAllTasks();
     }
 
     public static JavaPlugin getInstance() {

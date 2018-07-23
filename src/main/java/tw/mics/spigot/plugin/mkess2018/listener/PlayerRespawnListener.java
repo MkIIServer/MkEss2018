@@ -106,9 +106,9 @@ public class PlayerRespawnListener extends MyListener {
             @Override
             public void run() {
                 ItemStack cookie = new ItemStack(Material.COOKIE, 64);
-                ItemStack boat = new ItemStack(Material.BOAT, 1);
-                ItemStack axe = new ItemStack(Material.WOOD_AXE, 1);
-                ItemStack pickaxe = new ItemStack(Material.WOOD_PICKAXE, 1);
+                ItemStack boat = new ItemStack(Material.OAK_BOAT, 1);
+                ItemStack axe = new ItemStack(Material.WOODEN_AXE, 1);
+                ItemStack pickaxe = new ItemStack(Material.WOODEN_PICKAXE, 1);
                 p.getInventory().addItem(cookie);
                 p.getInventory().addItem(boat);
                 p.getInventory().addItem(axe);
