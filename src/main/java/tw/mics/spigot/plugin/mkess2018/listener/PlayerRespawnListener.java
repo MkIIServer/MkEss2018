@@ -26,8 +26,8 @@ import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class PlayerRespawnListener extends MyListener {
     static int RANDOM_SPAWN_MAX = 1000;
-    static int PLAYER_DISTANCE_MIN = 300;
-    static int PLAYER_DISTANCE_MAX = 500;
+    static int PLAYER_DISTANCE_MIN = 500;
+    static int PLAYER_DISTANCE_MAX = 1000;
 
     public PlayerRespawnListener(MkEss instance)
     {
