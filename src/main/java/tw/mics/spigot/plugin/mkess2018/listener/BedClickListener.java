@@ -51,7 +51,7 @@ public class BedClickListener extends MyListener {
                 !this.checkPlayerSpawn(b, p)
             ){
                 p.setBedSpawnLocation(b.getLocation());
-                p.sendMessage("重生點已紀錄, 記得床旁邊要有空位才可以正常重生.");
+                p.sendMessage("§a重生點已紀錄, 記得床旁要有空位且地板為實心不透明.");
                 event.setCancelled(true);
                 return;
             }
@@ -67,7 +67,7 @@ public class BedClickListener extends MyListener {
             this.checkPlayerSpawn(b, p)
         ){
             p.setBedSpawnLocation(null);
-            p.sendMessage("§c請注意, 您已拆除您重生點的床, 將會無法重生於此.");
+            p.sendMessage("§c請注意, 您已拆除您重生點的床, 將無法重生於此.");
         }
     }
 
