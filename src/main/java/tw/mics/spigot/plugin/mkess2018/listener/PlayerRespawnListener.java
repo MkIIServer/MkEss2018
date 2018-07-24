@@ -14,6 +14,7 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -35,7 +36,7 @@ public class PlayerRespawnListener extends MyListener {
     }
     
     //第一次加入
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerFirstJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
         if(!p.hasPlayedBefore()) {
@@ -46,7 +47,7 @@ public class PlayerRespawnListener extends MyListener {
     }
 
 	//玩家重生
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		Player p = event.getPlayer();
         givePosionEffect(p);
@@ -57,7 +58,7 @@ public class PlayerRespawnListener extends MyListener {
 	}
     
     //終界門回來
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
     public void onPortalTeleport(PlayerTeleportEvent event){
         if( event.getCause() == TeleportCause.END_PORTAL && event.getTo().getWorld().getEnvironment() == Environment.NORMAL ){
             Player p = event.getPlayer();
