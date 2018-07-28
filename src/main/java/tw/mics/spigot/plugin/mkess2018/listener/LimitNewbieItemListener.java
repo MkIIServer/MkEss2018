@@ -83,10 +83,7 @@ public class LimitNewbieItemListener extends MyListener {
         //drag in
         ItemStack item = e.getOldCursor();
         if(
-                item != null &&
-                item.getItemMeta() != null &&
-                item.getItemMeta().getLore() != null &&
-                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING) &&
+                isNewbieItem(item) &&
                 e.getInventory() != null &&
                 e.getInventory().getType() != InventoryType.PLAYER
         ){
@@ -97,12 +94,7 @@ public class LimitNewbieItemListener extends MyListener {
     @EventHandler
     public void onPlayerThrow(PlayerDropItemEvent e){
         ItemStack item = e.getItemDrop().getItemStack();
-        if(
-            item != null &&
-            item.getItemMeta() != null &&
-            item.getItemMeta().getLore() != null &&
-            item.getItemMeta().getLore().contains(LIMIT_LORE_STRING) 
-        ){
+        if(isNewbieItem(item)){
             e.getItemDrop().remove();
         }
     }
