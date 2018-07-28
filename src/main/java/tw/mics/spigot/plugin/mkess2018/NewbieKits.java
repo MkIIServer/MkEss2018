@@ -57,6 +57,11 @@ public class NewbieKits {
                 strs.add(ChatColor.GREEN + "終界箱是這個世界上最安全的地方!");
                 setNewbieItemMeta(pickaxe, strs);
 
+                ItemStack shovel = new ItemStack(Material.WOODEN_SHOVEL, 1);
+                shovel.addEnchantment(Enchantment.DURABILITY, 3);
+                shovel.addEnchantment(Enchantment.DIG_SPEED, 1);
+                setNewbieItemMeta(shovel);
+
                 ItemStack bed = new ItemStack(Material.WHITE_BED, 1);
                 strs = new ArrayList<String>();
                 strs.add("放置後會變為一般物品");
@@ -76,13 +81,12 @@ public class NewbieKits {
                 strs = new ArrayList<String>();
                 strs.add("放置後會變為一般物品");
                 strs.add("");
-                strs.add(ChatColor.GREEN + "離朋友很遠? 有方法可以上地獄頂端跑圖.");
+                strs.add(ChatColor.GREEN + "離朋友很遠? 可以上地獄頂端跑圖.");
                 strs.add(ChatColor.GREEN + "幹嘛給你黑曜石? 當然就是去地獄囉!");
                 setNewbieItemMeta(obsidian, strs);
 
                 ItemStack ender_pearl = new ItemStack(Material.ENDER_PEARL, 16);
                 strs = new ArrayList<String>();
-                strs.add("可於小合成臺合成東西");
                 strs.add("");
                 strs.add(ChatColor.GREEN + "這是上地獄頂端的秘密武器.");
                 strs.add(ChatColor.GREEN + "不會用? 上網查阿!");
@@ -115,10 +119,11 @@ public class NewbieKits {
                 p.getInventory().addItem(cookie);
                 p.getInventory().addItem(axe);
                 p.getInventory().addItem(pickaxe);
-                p.getInventory().addItem(ender_pearl);
-                p.getInventory().addItem(boat);
+                p.getInventory().addItem(shovel);
                 p.getInventory().addItem(bed);
+                p.getInventory().addItem(boat);
                 p.getInventory().addItem(obsidian);
+                p.getInventory().addItem(ender_pearl);
             }
         });
     }
