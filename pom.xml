@@ -6,7 +6,7 @@
     <groupId>tw.mics.spigot.plugin.mkess2018</groupId>
     <artifactId>MkEss2018</artifactId>
     <packaging>jar</packaging>
-    <version>1.3.1</version>
+    <version>1.3.2</version>
     <name>MkEss2018</name>
     <url>http://mics.tw</url>
     <description>Mk.II 2018 Essential Plugin.</description>

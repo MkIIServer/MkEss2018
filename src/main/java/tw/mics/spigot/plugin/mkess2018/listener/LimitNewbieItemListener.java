@@ -29,12 +29,7 @@ public class LimitNewbieItemListener extends MyListener {
         Iterator<ItemStack> itr = drops.iterator();
         while(itr.hasNext()){
             ItemStack item = itr.next();
-            if(
-                item != null &&
-                item.getItemMeta() != null &&
-                item.getItemMeta().getLore() != null &&
-                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING)
-            ){
+            if(isNewbieItem(item)){
                 itr.remove();
             }
         }
@@ -53,10 +48,7 @@ public class LimitNewbieItemListener extends MyListener {
         ){
             ItemStack item = e.getCursor();
             if(
-                item != null &&
-                item.getItemMeta() != null &&
-                item.getItemMeta().getLore() != null &&
-                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING) &&
+                isNewbieItem(item) &&
                 e.getClickedInventory() != null &&
                 e.getClickedInventory().getType() != InventoryType.PLAYER
             ){
@@ -68,10 +60,7 @@ public class LimitNewbieItemListener extends MyListener {
         ){
             ItemStack item = e.getCurrentItem();
             if(
-                item != null &&
-                item.getItemMeta() != null &&
-                item.getItemMeta().getLore() != null &&
-                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING) &&
+                isNewbieItem(item) &&
                 e.getClickedInventory() != null &&
                 e.getClickedInventory().getType() == InventoryType.PLAYER &&
                 e.getWhoClicked().getOpenInventory().getType() != InventoryType.PLAYER
@@ -81,10 +70,7 @@ public class LimitNewbieItemListener extends MyListener {
         } else if(e.getClick() == ClickType.NUMBER_KEY){ //number key
             ItemStack item = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
             if(
-                item != null &&
-                item.getItemMeta() != null &&
-                item.getItemMeta().getLore() != null &&
-                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING) &&
+                isNewbieItem(item) &&
                 e.getClickedInventory().getType() != InventoryType.PLAYER
             ){
                 e.setCancelled(true);
@@ -119,5 +105,12 @@ public class LimitNewbieItemListener extends MyListener {
         ){
             e.getItemDrop().remove();
         }
+    }
+
+    private boolean isNewbieItem(ItemStack item){
+        return  item != null &&
+                item.getItemMeta() != null &&
+                item.getItemMeta().getLore() != null &&
+                item.getItemMeta().getLore().contains(LIMIT_LORE_STRING);
     }
 }
