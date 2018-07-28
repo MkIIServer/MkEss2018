@@ -133,6 +133,8 @@ public class PlayerRespawnListener extends MyListener {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
             @Override
             public void run() {
+                p.sendMessage(ChatColor.GREEN + "您已隨機重生, 新手裝備已發送. (附有簡易教學)");
+
                 List<String> strs;
                 ItemStack cookie = new ItemStack(Material.COOKIE, 64);
                 strs = new ArrayList<String>();
