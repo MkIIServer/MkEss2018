@@ -3,8 +3,7 @@ package tw.mics.spigot.plugin.mkess2018.listener;
 import java.util.Iterator;
 import java.util.List;
 
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Item;
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.ClickType;
@@ -44,6 +43,9 @@ public class LimitNewbieItemListener extends MyListener {
     //放置於除玩家身上
     @EventHandler
     public void onPlayerClickItem(InventoryClickEvent e) {
+        //如果為創造就不判斷
+        if(e.getWhoClicked().getGameMode() == GameMode.CREATIVE) return;
+
         //put in
         if(
                 e.getClick() == ClickType.LEFT ||
@@ -60,10 +62,7 @@ public class LimitNewbieItemListener extends MyListener {
             ){
                 e.setCancelled(true);
             }
-        }
-        
-        //shift + click put in
-        if(
+        } else if( //shift + click put in
                 e.getClick() == ClickType.SHIFT_LEFT ||
                 e.getClick() == ClickType.SHIFT_RIGHT
         ){
@@ -79,10 +78,7 @@ public class LimitNewbieItemListener extends MyListener {
             ){
                 e.setCancelled(true);
             }
-        }
-        
-        //number key
-        if(e.getClick() == ClickType.NUMBER_KEY){
+        } else if(e.getClick() == ClickType.NUMBER_KEY){ //number key
             ItemStack item = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
             if(
                 item != null &&
