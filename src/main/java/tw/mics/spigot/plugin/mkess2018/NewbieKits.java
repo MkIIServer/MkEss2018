@@ -59,7 +59,7 @@ public class NewbieKits {
 
                 ItemStack shovel = new ItemStack(Material.WOODEN_SHOVEL, 1);
                 shovel.addEnchantment(Enchantment.DURABILITY, 3);
-                shovel.addEnchantment(Enchantment.DIG_SPEED, 1);
+                shovel.addEnchantment(Enchantment.DIG_SPEED, 2);
                 strs = new ArrayList<String>();
                 strs.add("");
                 strs.add(ChatColor.GREEN + "慎選合作夥伴!");
