@@ -60,7 +60,11 @@ public class NewbieKits {
                 ItemStack shovel = new ItemStack(Material.WOODEN_SHOVEL, 1);
                 shovel.addEnchantment(Enchantment.DURABILITY, 3);
                 shovel.addEnchantment(Enchantment.DIG_SPEED, 1);
-                setNewbieItemMeta(shovel);
+                strs = new ArrayList<String>();
+                strs.add("");
+                strs.add(ChatColor.GREEN + "慎選合作夥伴!");
+                strs.add(ChatColor.GREEN + "不建議在公開頻道宣揚自己的座標.");
+                setNewbieItemMeta(shovel, strs);
 
                 ItemStack bed = new ItemStack(Material.WHITE_BED, 1);
                 strs = new ArrayList<String>();
