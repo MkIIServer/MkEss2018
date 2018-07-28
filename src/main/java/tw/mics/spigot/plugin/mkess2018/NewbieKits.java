@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class NewbieKits {
     
-    private final static Color NEWBIE_COLOR = Color.fromRGB(204, 255, 0);
+    private final static Color NEWBIE_COLOR = Color.fromRGB(108, 177, 177);
     private final static String[] NEWBIE_STRING = {
         "新手裝備",
         "無法放置於容器",
@@ -57,14 +57,6 @@ public class NewbieKits {
                 strs.add(ChatColor.GREEN + "終界箱是這個世界上最安全的地方!");
                 setNewbieItemMeta(pickaxe, strs);
 
-                ItemStack boat = new ItemStack(Material.OAK_BOAT, 1);
-                strs = new ArrayList<String>();
-                strs.add("放置後會變為一般物品");
-                strs.add("");
-                strs.add(ChatColor.GREEN + "重生在海上? 這個船就是給你用的.");
-                strs.add(ChatColor.GREEN + "離朋友很遠? 有方法可以上地獄頂端跑圖.");
-                setNewbieItemMeta(boat, strs);
-
                 ItemStack bed = new ItemStack(Material.WHITE_BED, 1);
                 strs = new ArrayList<String>();
                 strs.add("放置後會變為一般物品");
@@ -73,8 +65,14 @@ public class NewbieKits {
                 strs.add(ChatColor.GREEN + "重生於床時不會贈送新手裝備.");
                 setNewbieItemMeta(bed, strs);
 
-                /*
-                ItemStack obsidian = new ItemStack(Material.OBSIDIAN, 10);
+                ItemStack boat = new ItemStack(Material.OAK_BOAT, 1);
+                strs = new ArrayList<String>();
+                strs.add("放置後會變為一般物品");
+                strs.add("");
+                strs.add(ChatColor.GREEN + "重生在海上? 這個船就是給你用的.");
+                setNewbieItemMeta(boat, strs);
+                
+                ItemStack obsidian = new ItemStack(Material.OBSIDIAN, 20);
                 strs = new ArrayList<String>();
                 strs.add("放置後會變為一般物品");
                 strs.add("");
@@ -84,10 +82,12 @@ public class NewbieKits {
 
                 ItemStack ender_pearl = new ItemStack(Material.ENDER_PEARL, 16);
                 strs = new ArrayList<String>();
+                strs.add("可於小合成臺合成東西");
                 strs.add("");
                 strs.add(ChatColor.GREEN + "這是上地獄頂端的秘密武器.");
+                strs.add(ChatColor.GREEN + "不會用? 上網查阿!");
                 setNewbieItemMeta(ender_pearl, strs);
-                */
+                
 
                 ItemStack leather_helmet = new ItemStack(Material.LEATHER_HELMET, 1);
                 leather_helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
@@ -115,10 +115,10 @@ public class NewbieKits {
                 p.getInventory().addItem(cookie);
                 p.getInventory().addItem(axe);
                 p.getInventory().addItem(pickaxe);
-                //p.getInventory().addItem(ender_pearl);
+                p.getInventory().addItem(ender_pearl);
                 p.getInventory().addItem(boat);
                 p.getInventory().addItem(bed);
-                //p.getInventory().addItem(obsidian);
+                p.getInventory().addItem(obsidian);
             }
         });
     }

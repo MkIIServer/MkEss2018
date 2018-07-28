@@ -1,5 +1,6 @@
 package tw.mics.spigot.plugin.mkess2018.listener;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +22,10 @@ public class LimitNewbieItemListener extends MyListener {
     }
 
     private final static String LIMIT_LORE_STRING = "新手裝備";
+    private final static InventoryType[] ALLOW_INVENTORY_TYPE = {
+        InventoryType.PLAYER,
+        InventoryType.CRAFTING
+    };
 
     //死亡掉落
     @EventHandler
@@ -34,6 +39,7 @@ public class LimitNewbieItemListener extends MyListener {
             }
         }
     }
+
 
     //放置於除玩家身上
     @EventHandler
@@ -50,7 +56,7 @@ public class LimitNewbieItemListener extends MyListener {
             if(
                 isNewbieItem(item) &&
                 e.getClickedInventory() != null &&
-                e.getClickedInventory().getType() != InventoryType.PLAYER
+                !Arrays.asList(ALLOW_INVENTORY_TYPE).contains(e.getClickedInventory().getType())
             ){
                 e.setCancelled(true);
             }
@@ -63,7 +69,7 @@ public class LimitNewbieItemListener extends MyListener {
                 isNewbieItem(item) &&
                 e.getClickedInventory() != null &&
                 e.getClickedInventory().getType() == InventoryType.PLAYER &&
-                e.getWhoClicked().getOpenInventory().getType() != InventoryType.PLAYER
+                !Arrays.asList(ALLOW_INVENTORY_TYPE).contains(e.getWhoClicked().getOpenInventory().getType())
             ){
                 e.setCancelled(true);
             }
@@ -71,7 +77,8 @@ public class LimitNewbieItemListener extends MyListener {
             ItemStack item = e.getWhoClicked().getInventory().getItem(e.getHotbarButton());
             if(
                 isNewbieItem(item) &&
-                e.getClickedInventory().getType() != InventoryType.PLAYER
+                e.getClickedInventory() != null &&
+                !Arrays.asList(ALLOW_INVENTORY_TYPE).contains(e.getClickedInventory().getType())
             ){
                 e.setCancelled(true);
             }
@@ -83,11 +90,11 @@ public class LimitNewbieItemListener extends MyListener {
         //drag in
         ItemStack item = e.getOldCursor();
         if(
-                isNewbieItem(item) &&
-                e.getInventory() != null &&
-                e.getInventory().getType() != InventoryType.PLAYER
+            isNewbieItem(item) &&
+            e.getInventory() != null &&
+            !Arrays.asList(ALLOW_INVENTORY_TYPE).contains(e.getInventory().getType())
         ){
-                e.setCancelled(true);
+            e.setCancelled(true);
         }
     }
 
