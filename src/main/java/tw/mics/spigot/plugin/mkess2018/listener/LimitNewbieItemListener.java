@@ -11,7 +11,9 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemStack;
 
 import tw.mics.spigot.plugin.mkess2018.MkEss;
@@ -104,6 +106,17 @@ public class LimitNewbieItemListener extends MyListener {
         if(isNewbieItem(item)){
             e.getItemDrop().remove();
         }
+    }
+
+    //防止合成
+    @EventHandler
+    public void onCrafting(PrepareItemCraftEvent e){
+        CraftingInventory inv = e.getInventory();
+        inv.forEach((item)->{
+            if(isNewbieItem(item)){
+                inv.setResult(null);
+            }
+        });
     }
 
     private boolean isNewbieItem(ItemStack item){
