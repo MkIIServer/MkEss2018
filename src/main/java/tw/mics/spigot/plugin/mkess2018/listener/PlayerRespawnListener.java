@@ -82,8 +82,8 @@ public class PlayerRespawnListener extends MyListener {
             if(
                 p.getUniqueId() == player.getUniqueId() ||
                 p.getGameMode() != GameMode.SURVIVAL ||
-                Math.abs(player.getLocation().getBlockX()) > WORLD_LIMIT ||
-                Math.abs(player.getLocation().getBlockZ()) > WORLD_LIMIT 
+                Math.abs(p.getLocation().getBlockX()) > WORLD_LIMIT ||
+                Math.abs(p.getLocation().getBlockZ()) > WORLD_LIMIT 
             ){
                 itr.remove();
                 continue;
