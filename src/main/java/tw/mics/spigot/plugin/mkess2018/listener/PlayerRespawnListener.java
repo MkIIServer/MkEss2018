@@ -25,6 +25,7 @@ import tw.mics.spigot.plugin.mkess2018.MkEss;
 import tw.mics.spigot.plugin.mkess2018.NewbieKits;
 
 public class PlayerRespawnListener extends MyListener {
+    static int WORLD_LIMIT = 30000;
     static int RANDOM_SPAWN_MAX = 1000;
     static int PLAYER_DISTANCE_MIN = 500;
     static int PLAYER_DISTANCE_MAX = 1000;
@@ -80,7 +81,9 @@ public class PlayerRespawnListener extends MyListener {
             Player p = itr.next();
             if(
                 p.getUniqueId() == player.getUniqueId() ||
-                p.getGameMode() != GameMode.SURVIVAL
+                p.getGameMode() != GameMode.SURVIVAL ||
+                Math.abs(player.getLocation().getBlockX()) > WORLD_LIMIT ||
+                Math.abs(player.getLocation().getBlockZ()) > WORLD_LIMIT 
             ){
                 itr.remove();
                 continue;
