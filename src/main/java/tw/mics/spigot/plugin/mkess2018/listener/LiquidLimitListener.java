@@ -27,17 +27,14 @@ public class LiquidLimitListener extends MyListener {
                 @Override
                 public void run() {
                     LiquidLimitListener.flow_count = 0;
-                    MkEss.getPlugin(MkEss.class).log("set 0");
                     cancel();
                 }
            }.runTask(MkEss.getInstance());
         }
 
-        MkEss.getPlugin(MkEss.class).log("%d", flow_count);
         if(flow_count++ < LIQUIDLIMIT){
             return;
         }
-        MkEss.getPlugin(MkEss.class).log("cancel");
         e.setCancelled(true);
     }
 }
