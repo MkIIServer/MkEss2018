@@ -22,8 +22,8 @@ import tw.mics.spigot.plugin.mkess2018.NewbieKits;
 
 public class PlayerRespawnListener extends MyListener {
     static int WORLD_LIMIT = 24000;
-    static int PLAYER_DISTANCE_MIN = 200;
-    static int PLAYER_DISTANCE_MAX = 300;
+    static int PLAYER_DISTANCE_MIN = 300;
+    static int PLAYER_DISTANCE_MAX = 800;
 
     public PlayerRespawnListener(MkEss instance)
     {
@@ -78,6 +78,7 @@ public class PlayerRespawnListener extends MyListener {
         if(l.getX() < -WORLD_LIMIT) l.setX(-WORLD_LIMIT);
         if(l.getY() < -WORLD_LIMIT) l.setY(-WORLD_LIMIT);
         Block b = w.getHighestBlockAt(l);
+        w.setSpawnLocation(b.getLocation());
         return b.getLocation().add(0.5, 0, 0.5);
     }
 
