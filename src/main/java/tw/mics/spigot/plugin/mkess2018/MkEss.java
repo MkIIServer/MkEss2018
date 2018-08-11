@@ -23,7 +23,7 @@ public class MkEss extends JavaPlugin {
         //註冊 listener
         new BedClickListener(this);
         new PlayerRespawnListener(this);
-        new PlayerDeathListener(this);
+        //new PlayerDeathListener(this);
         new LiquidLimitListener(this);
         new SpeedElytraLimitListener(this);
         new LimitNewbieItemListener(this);
