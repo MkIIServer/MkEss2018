@@ -1,66 +1,43 @@
 package tw.mics.spigot.plugin.mkess2018.listener;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 import tw.mics.spigot.plugin.mkess2018.MkEss;
 
 public class LiquidLimitListener extends MyListener {
-    static int LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT = 2;
-    static int LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT = 4;
+    static int LIQUIDLIMIT = 30;
     
     public LiquidLimitListener(MkEss instance) {
         super(instance);
     }
 
-    // 防止岩漿流動
+    static int flow_count = 0;
+    static BukkitTask count_reset_id;
+
+    // 防止大量液體流動
     @EventHandler
-    public void onLavaFlow(BlockFromToEvent e) {
-        if (!(e.getBlock().getType() == Material.LAVA))
+    public void onLiquidFlow(BlockFromToEvent e) {
+        if(!e.getBlock().isLiquid()) return;
+
+        if(count_reset_id == null || count_reset_id.isCancelled()){
+            count_reset_id = new BukkitRunnable() {
+                @Override
+                public void run() {
+                    LiquidLimitListener.flow_count = 0;
+                    MkEss.getPlugin(MkEss.class).log("set 0");
+                    cancel();
+                }
+           }.runTask(MkEss.getInstance());
+        }
+
+        MkEss.getPlugin(MkEss.class).log("%d", flow_count);
+        if(flow_count++ < LIQUIDLIMIT){
             return;
-
-        final int lava_high_limit = LIQUIDLIMIT_LAVA_FLOW_HIGH_LIMIT;
-
-        if (lava_high_limit != -1) {
-            boolean flag_deny = true;
-            Location l = e.getToBlock().getLocation();
-            for (int i = 0; i < lava_high_limit; i++) {
-                l.add(0, -1, 0);
-                Material block_type = l.getBlock().getType();
-                if (block_type != Material.AIR) {
-                    flag_deny = false;
-                    break;
-                }
-            }
-            if (flag_deny) {
-                e.setCancelled(true);
-            }
         }
-    }
-
-    // 防止水流動
-    @EventHandler
-    public void onWaterFlow(BlockFromToEvent e) {
-        final int water_high_limit = LIQUIDLIMIT_WATER_FLOW_HIGH_LIMIT;
-        if (water_high_limit != -1) {
-            if (!(e.getBlock().getType() == Material.WATER))
-                return;
-
-            boolean flag_deny = true;
-            Location l = e.getToBlock().getLocation();
-            for (int i = 0; i < water_high_limit; i++) {
-                l.add(0, -1, 0);
-                Material block_type = l.getBlock().getType();
-                if (block_type != Material.AIR) {
-                    flag_deny = false;
-                    break;
-                }
-            }
-            if (flag_deny) {
-                e.setCancelled(true);
-            }
-        }
+        MkEss.getPlugin(MkEss.class).log("cancel");
+        e.setCancelled(true);
     }
 }
