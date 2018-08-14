@@ -1,10 +1,5 @@
 package tw.mics.spigot.plugin.mkess2018;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -15,17 +10,22 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class NewbieKits {
-    
+
     private final static Color NEWBIE_COLOR = Color.fromRGB(108, 177, 177);
     private final static String[] NEWBIE_STRING = {
-        "新手裝備",
-        "無法放置於容器",
-        "掉落後直接消失"
+            "新手裝備",
+            "無法放置於容器",
+            "掉落後直接消失"
     };
 
     public static void giveKits(Player p) {
-        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(MkEss.instance, new Runnable(){
+        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(MkEss.instance, new Runnable() {
             @Override
             public void run() {
                 p.sendMessage(ChatColor.GREEN + "您已隨機重生, 新手裝備已發送. (附有簡易教學)");
@@ -80,7 +80,7 @@ public class NewbieKits {
                 strs.add("");
                 strs.add(ChatColor.GREEN + "重生在海上? 這個船就是給你用的.");
                 setNewbieItemMeta(boat, strs);
-                
+
                 ItemStack obsidian = new ItemStack(Material.OBSIDIAN, 20);
                 strs = new ArrayList<String>();
                 strs.add("放置後會變為一般物品");
@@ -95,7 +95,7 @@ public class NewbieKits {
                 strs.add(ChatColor.GREEN + "這是上地獄頂端的秘密武器.");
                 strs.add(ChatColor.GREEN + "不會用? 上網查阿!");
                 setNewbieItemMeta(ender_pearl, strs);
-                
+
 
                 ItemStack leather_helmet = new ItemStack(Material.LEATHER_HELMET, 1);
                 leather_helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
@@ -112,7 +112,7 @@ public class NewbieKits {
                 ItemStack leather_boots = new ItemStack(Material.LEATHER_BOOTS, 1);
                 leather_boots.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
                 setNewbieItemMeta(leather_boots);
-                
+
                 //身上裝備
                 p.getInventory().setHelmet(leather_helmet);
                 p.getInventory().setChestplate(leather_chestplate);
@@ -131,18 +131,18 @@ public class NewbieKits {
             }
         });
     }
-    
-    private static void setNewbieItemMeta(ItemStack i){
+
+    private static void setNewbieItemMeta(ItemStack i) {
         setNewbieItemMeta(i, null);
     }
 
-    private static void setNewbieItemMeta(ItemStack i, List<String> strs){
+    private static void setNewbieItemMeta(ItemStack i, List<String> strs) {
         ItemMeta meta = i.getItemMeta();
-        if(meta instanceof LeatherArmorMeta){
-            ((LeatherArmorMeta)meta).setColor(NEWBIE_COLOR);
+        if (meta instanceof LeatherArmorMeta) {
+            ((LeatherArmorMeta) meta).setColor(NEWBIE_COLOR);
         }
         LinkedList<String> lores = new LinkedList<String>(Arrays.asList(NEWBIE_STRING));
-        if(strs != null) lores.addAll(strs);
+        if (strs != null) lores.addAll(strs);
         meta.setLore(lores);
         i.setItemMeta(meta);
     }
