@@ -25,6 +25,9 @@ public class MkEss extends JavaPlugin {
         new LiquidLimitListener(this);
         new SpeedElytraLimitListener(this);
         new LimitNewbieItemListener(this);
+        if(isClassExist("me.vagdedes.spartan.api.API")){
+            new SpartanFixListener(this);
+        }
     }
 
     @Override
@@ -36,5 +39,14 @@ public class MkEss extends JavaPlugin {
     public void log(String str, Object... args) {
         String message = String.format(str, args);
         getLogger().info(message);
+    }
+
+    private boolean isClassExist(String className) {
+        try  {
+            Class.forName(className);
+            return true;
+        }  catch (ClassNotFoundException e) {
+            return false;
+        }
     }
 }

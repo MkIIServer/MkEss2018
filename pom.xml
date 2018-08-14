@@ -6,7 +6,7 @@
     <groupId>tw.mics.spigot.plugin.mkess2018</groupId>
     <artifactId>MkEss2018</artifactId>
     <packaging>jar</packaging>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
     <name>MkEss2018</name>
     <url>http://mics.tw</url>
     <description>Mk.II 2018 Essential Plugin.</description>
@@ -82,6 +82,14 @@
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>${mc-version}-${bukkit-ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.vagdedes</groupId>
+            <artifactId>spartan</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/SpartanAPI.jar</systemPath>
         </dependency>
 
     </dependencies>
