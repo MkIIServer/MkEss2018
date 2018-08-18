@@ -28,11 +28,11 @@ public class SpartanFixListener extends MyListener {
     };
 
     private final static Material[] SHOVEL = {
-        Material.DIAMOND_SHOVEL,
-        Material.IRON_SHOVEL,
-        Material.GOLDEN_SHOVEL,
+        //Material.DIAMOND_SHOVEL,
+        //Material.IRON_SHOVEL,
+        //Material.GOLDEN_SHOVEL,
         Material.WOODEN_SHOVEL,
-        Material.STONE_SHOVEL
+        //Material.STONE_SHOVEL
     };
     
     public SpartanFixListener(MkEss instance) {
