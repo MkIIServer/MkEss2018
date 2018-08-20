@@ -25,6 +25,7 @@ public class MkEss extends JavaPlugin {
         new LiquidLimitListener(this);
         new SpeedElytraLimitListener(this);
         new LimitNewbieItemListener(this);
+        new ChatLimitListener(this);
         if(isClassExist("me.vagdedes.spartan.api.API")){
             new SpartanFixListener(this);
         }
